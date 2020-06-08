@@ -602,7 +602,8 @@ open class RAGTextField: UITextField {
         
         let w = bounds.width - textPadding.left - textPadding.right
         let h = measureHintSize(availableWidth: w).height
-        let x = userInterfaceDirectionAwareTextPadding.left
+        // Outline hint label to the left edge.
+        let x: CGFloat = 0
         
         var y = bounds.height - h
         if [.textAndHint, .textAndPlaceholderAndHint].contains(textPaddingMode) {
@@ -1016,8 +1017,8 @@ open class RAGTextField: UITextField {
     }
     
     private func normalVerticalPlaceholderConstraintConstant() -> CGFloat {
-        
-        return computeTopInsetToText() + 0.5 * measureTextHeight()
+        // Center align textfield in container.
+        return computeTopInsetToText()
     }
     
     private func makeScaledHorizontalPlaceholderConstraint(textAlignment: NSTextAlignment) -> NSLayoutConstraint {
